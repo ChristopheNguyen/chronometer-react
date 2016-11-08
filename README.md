@@ -1,6 +1,9 @@
 # Description 
 
-A sample React Project displaying a chronometer
+A sample React project displaying a chronometer, using:
+- Express
+- Webpack
+- ES6 Class
 
 # How to install
 
