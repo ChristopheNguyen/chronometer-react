@@ -1,4 +1,5 @@
-# chronometer-react
+# Description 
+
 A sample React Project displaying a chronometer
 
 # How to install
