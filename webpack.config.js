@@ -1,26 +1,29 @@
-var path = require('path');
-var webpack = require('webpack');
+var path              = require('path');
+var webpack           = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: path.join(__dirname, 'src', 'app.js'),
     output: {
-        path: path.join(__dirname, 'src', 'app.js'),
-        filename: 'app.js',
-        publicPath: '/'
+      path: path.join(__dirname, './public'),
+      filename: 'app.js',
+      publicPath: '/assets/'
     },
     module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'react']
-                }
-            },
-            { test: /\.css$/, loader: 'style-loader!css-loader' },
-            { test: /\.(png|jpg|jpeg|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=8192', include: __dirname },
-            { test: /\.json$/, loader: 'json', include: __dirname },
-        ]
+      loaders: [{
+          test: /\.js$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/,
+          query: {
+              presets: ['es2015', 'react']
+          }
+        },
+        { test: /\.css/, loader: ExtractTextPlugin.extract("css") }
+      ]
     },
+    plugins: [
+      new ExtractTextPlugin("app.css"), // Exports every css file into one css file
+      new webpack.optimize.OccurrenceOrderPlugin(), // Implements livereload
+      new webpack.HotModuleReplacementPlugin() // Implements livereload
+    ]
 };
