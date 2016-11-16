@@ -23,7 +23,7 @@ module.exports = {
     },
     plugins: [
       new ExtractTextPlugin("app.css"), // Exports every css file into one css file
-      new webpack.optimize.OccurrenceOrderPlugin(), // Implements livereload
+      new webpack.optimize.OccurrenceOrderPlugin(), // Optimize id chunks
       new webpack.HotModuleReplacementPlugin() // Implements livereload
     ]
 };
