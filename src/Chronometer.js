@@ -81,13 +81,13 @@ export default class Chronometer extends Component {
         let min = diff ? diff.getMinutes() : 0;
 
         return (
-            <h1>
+            <div>
                 {this.twoDigits(min)}:{this.twoDigits(sec)}:{this.twoDigits(msec)}
                 &nbsp;
                 <ButtonStartStop  click={this.handleClickStartStop} value={this.state.isStartOrStop ? 'Start' : 'Stop'} />
                 &nbsp;
                 <ButtonReset  click={this.handleClickReset} value='Reset' disabled={this.state.disabled}/>
-            </h1>
+            </div>
         )
     }
 
